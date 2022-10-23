@@ -10,8 +10,8 @@ services:
     tty: true
     restart: always
     ports:
-      - '6681:6680'
-      - '6601:6600'
+      - '6691:6680'
+      - '6611:6600'
     volumes:
       - 'muco-data:/data'
     depends_on:
@@ -25,8 +25,8 @@ services:
     tty: true
     restart: always
     ports:
-      - '6682:6680'
-      - '6602:6600'
+      - '6692:6680'
+      - '6692:6600'
     volumes:
       - 'muco-data:/data'
     depends_on:
@@ -40,10 +40,10 @@ services:
     tty: true
     restart: always
     ports:
-      - '1704:1704'
-      - '1705:1705'
-      - '1706:1706'
-      - '1780:1780'
+      - '1714:1704'
+      - '1715:1705'
+      - '1716:1706'
+      - '1790:1780'
     volumes:
       - 'muco-data:/data'
 
