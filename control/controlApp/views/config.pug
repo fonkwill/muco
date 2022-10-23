@@ -1,0 +1,16 @@
+extends layout
+
+
+block content
+  h1= title
+
+
+  form(action='config/update' method='POST')
+    ul
+      for item in results 
+        li
+          | #{item.title}, #{item.desc}, 
+          input(name=item.key type='text' value=item.value)
+    input(type='submit' value='Submit')
+
+

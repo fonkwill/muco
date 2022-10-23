@@ -1,0 +1,49 @@
+version: '2.1'
+networks: {}
+volumes:
+  muco-data: {}
+services:
+  radio_house:
+    build:
+      context: ./mopidy
+    privileged: true
+    tty: true
+    restart: always
+    ports:
+      - '6681:6680'
+      - '6601:6600'
+    volumes:
+      - 'muco-data:/data'
+    depends_on:
+      - 'snapserver'
+    environment:
+      - SNAPSERVER_PORT=6633
+  radio_garden:
+    build:
+      context: ./mopidy
+    privileged: true
+    tty: true
+    restart: always
+    ports:
+      - '6682:6680'
+      - '6602:6600'
+    volumes:
+      - 'muco-data:/data'
+    depends_on:
+      - 'snapserver'
+    environment:
+      - SNAPSERVER_PORT=6634
+  snapserver:
+    build:
+      context: ./snapserver
+    privileged: true
+    tty: true
+    restart: always
+    ports:
+      - '1704:1704'
+      - '1705:1705'
+      - '1706:1706'
+      - '1780:1780'
+    volumes:
+      - 'muco-data:/data'
+

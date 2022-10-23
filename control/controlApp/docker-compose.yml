@@ -1,0 +1,10 @@
+version: "2"
+volumes:
+  db: {}
+services:
+  node:
+    build: .
+    volumes:
+      - db:/usr/src/app/db
+    ports:
+      - "3000:3000"

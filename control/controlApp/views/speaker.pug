@@ -1,0 +1,12 @@
+
+extends layout
+
+
+block content
+  script(src="./javascripts/speaker/config.js")
+  script(src="./javascripts/speaker/libflac.js")
+  script(src="./javascripts/speaker/snapstream.js")  
+  script(src="./javascripts/speaker/snapcontrol.js")  
+  script(src="./javascripts/speaker/speaker.js")  
+  h1 Speaker
+  a#speakerButton(class='buttonc' onclick='activateSpeaker()') Activate Speaker
