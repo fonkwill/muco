@@ -7,6 +7,19 @@ ARG TARGETARCH
 RUN  apt-get update \
   && apt-get install -y wget ca-certificates \
   && rm -rf /var/lib/apt/lists/*
+
+
+RUN apt-get update \
+  && apt-get install -y build-essential libasound2-dev curl
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup.sh
+RUN chmod 755 rustup.sh
+
+RUN apt-get update \
+  && apt-get install -y pkg-config
+
+RUN cargo install librespot
+
 RUN  wget https://github.com/badaix/snapcast/releases/download/v${snapcast_version}/snapserver_${snapcast_version}-1_armhf.deb
 RUN  dpkg -i snapserver_${snapcast_version}-1_armhf.deb \
   ;  apt-get update \
