@@ -1,8 +1,10 @@
-FROM balenalib/armv7hf-debian:buster-run
+FROM arm32v7/rust:slim-buster
 ENV DEBIAN_FRONTEND=noninteractive
 
-ARG  snapcast_version=0.25.0
+ARG  snapcast_version=0.26.0
 ARG TARGETARCH
+
+WORKDIR /tmp
 
 RUN  apt-get update \
   && apt-get install -y wget ca-certificates \
