@@ -1,4 +1,19 @@
 const WebSocket = require('websocket').w3cwebsocket;
+const conf = require("../config/server")
+
+class SnapserverService{
+    constructor(){
+        this.snapControl = new SnapControl(conf.snapcast_url)
+    }
+
+    getAllGroups(){
+        
+        console.log(this.snapControl.server)
+        return this.snapControl.server.groups
+
+    }
+    snapControl;
+}
 
 "use strict";
 class Host {
@@ -386,4 +401,5 @@ class SnapControl {
     msg_id;
     status_req_id;
 }
-module.exports = SnapControl, Group, Client, Stream
+
+module.exports = SnapserverService
