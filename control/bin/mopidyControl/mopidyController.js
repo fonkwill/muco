@@ -4,11 +4,11 @@ const talkOverVolume = 50;
 var lastVolume = -1;
 
 var mopidyScs = new Mopidy({
-    webSocketUrl: "ws://192.168.0.96:6682/mopidy/ws"
+    webSocketUrl: "ws://radio_garden.home.fonkwill.com/mopidy/ws"
 })
 
 var mopidyMusic = new Mopidy({
-    webSocketUrl: "ws://192.168.0.96:6681/mopidy/ws"
+    webSocketUrl: "ws://radio_house.home.fonkwill.com/mopidy/ws"
 })
 
 
