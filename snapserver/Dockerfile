@@ -34,7 +34,7 @@ ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 COPY snapserver.conf /etc/snapserver.conf
 
-RUN /usr/bin/snapserver -v
+#RUN /usr/bin/snapserver -v
 
 EXPOSE 1704 1705 1780
 #restart snapservice
