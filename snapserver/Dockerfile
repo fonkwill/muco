@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11
+FROM arm32v7/debian:stretch
 ENV DEBIAN_FRONTEND=noninteractive
 
 ARG  snapcast_version=0.26.0
@@ -26,8 +26,12 @@ WORKDIR /tmp
 #  && rm -rf /var/lib/apt/lists/*
 #RUN /usr/bin/snapserver -v
 
-RUN apt-get install -y gnupg
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
+
+ENV JAVA_HOME=/opt/java/openjdk
+COPY --from=eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+
+
 RUN apt-get update \
   && apt-get install -y snapserver
 
