@@ -24,7 +24,7 @@ RUN  dpkg -i snapserver_${snapcast_version}-1_armhf.deb \
   ;  apt-get update \
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
-#RUN /usr/bin/snapserver -v
+
 
 
 ENV JAVA_HOME=/opt/java/openjdk
@@ -34,7 +34,7 @@ ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 COPY snapserver.conf /etc/snapserver.conf
 
-RUN service snapserver restart
+RUN /usr/bin/snapserver -v
 
 EXPOSE 1704 1705 1780
 #restart snapservice
