@@ -26,6 +26,7 @@ WORKDIR /tmp
 #  && rm -rf /var/lib/apt/lists/*
 #RUN /usr/bin/snapserver -v
 
+RUN apt-get install -y gnupg
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
 RUN apt-get update \
   && apt-get install -y snapserver
