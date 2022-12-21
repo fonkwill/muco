@@ -44,17 +44,9 @@ services:
       - '1715:1705'
       - '1716:1706'
       - '1790:1780'
-    volumes:
-      - './muco-data/config:/etc/snapserver'
-      - './muco-data/transfer:/tmp'  
-  spocon:
-    build:
-      context: ./spocon
-    restart: always
-    privileged: true
-    volumes:
-      - './muco-data/config:/opt/librespot/config'
-      - './muco-data/transfer:/tmp'
-    ports:
       - '9993:9993'
       - '24879:24879'
+    volumes:
+      - './muco-data/config:/etc/snapserver'
+      - './muco-data/transfer:/tmp'
+      - './muco-data/config:/opt/librespot/config'

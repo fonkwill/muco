@@ -1,4 +1,4 @@
-FROM arm32v7/rust:slim-buster
+FROM eclipse-temurin:11
 ENV DEBIAN_FRONTEND=noninteractive
 
 ARG  snapcast_version=0.26.0
@@ -27,6 +27,13 @@ RUN  dpkg -i snapserver_${snapcast_version}-1_armhf.deb \
 #RUN /usr/bin/snapserver -v
 COPY snapserver.conf /etc/snapserver.conf
 
-
 EXPOSE 1704 1705 1780
-ENTRYPOINT ["/usr/bin/snapserver", "-c", "/etc/snapserver/snapserver.conf"]
+#restart snapservice
+
+RUN mkdir -p /opt/librespot/config
+
+ADD https://github.com/librespot-org/librespot-java/releases/download/v1.6.2/librespot-api-1.6.2.jar /opt/librespot/app.jar
+VOLUME /opt/librespot/config
+ADD ./config.toml /opt/librespot/config/config.toml
+
+CMD ["java", "-jar", "/opt/librespot/app.jar", "--conf-file=/opt/librespot/config/config.toml"]
