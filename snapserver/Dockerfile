@@ -25,6 +25,8 @@ WORKDIR /tmp
 #  && apt-get -f install -y \
 #  && rm -rf /var/lib/apt/lists/*
 #RUN /usr/bin/snapserver -v
+
+RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
 RUN apt-get update \
   && apt-get install -y snapserver
 
