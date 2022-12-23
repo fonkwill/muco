@@ -38,13 +38,15 @@ EXPOSE 1704 1705 1780
 #restart snapservice
 
 RUN mkdir -p /opt/librespot/config
+RUN mkdir -p /opt/snapserver/config
 
-COPY snapserver.conf /etc/snapserver.conf
-COPY librespot-api.sh /etc/librespot-api.sh
+COPY snapserver.conf /opt/snapserver/config/snapserver.conf
+COPY librespot-api.sh /opt/librespot/librespot-api.sh
 
 ADD https://github.com/librespot-org/librespot-java/releases/download/v1.6.2/librespot-api-1.6.2.jar /opt/librespot/app.jar
 VOLUME /opt/librespot/config
+VOLUME /opt/snapserver/config
 ADD ./config.toml /opt/librespot/config/config.toml
 
 
-CMD ["snapserver", "-v", "--config=/etc/snapserver.conf"]
+CMD ["snapserver", "-v", "--config=/opt/snapserver/config/snapserver.conf"]
