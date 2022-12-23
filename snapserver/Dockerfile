@@ -47,4 +47,4 @@ VOLUME /opt/librespot/config
 ADD ./config.toml /opt/librespot/config/config.toml
 
 
-#CMD ["java", "-jar", "/opt/librespot/app.jar", "--conf-file=/opt/librespot/config/config.toml"]
+CMD ["snapserver", "-c", "--config=/etc/snapserver.conf"]
