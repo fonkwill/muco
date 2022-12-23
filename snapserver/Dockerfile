@@ -32,8 +32,6 @@ COPY --from=eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 
-COPY snapserver.conf /etc/snapserver.conf
-
 #RUN /usr/bin/snapserver -v
 
 EXPOSE 1704 1705 1780
@@ -41,8 +39,12 @@ EXPOSE 1704 1705 1780
 
 RUN mkdir -p /opt/librespot/config
 
+COPY snapserver.conf /etc/snapserver.conf
+COPY librespot-api.sh /etc/librespot-api.sh
+
 ADD https://github.com/librespot-org/librespot-java/releases/download/v1.6.2/librespot-api-1.6.2.jar /opt/librespot/app.jar
 VOLUME /opt/librespot/config
 ADD ./config.toml /opt/librespot/config/config.toml
 
-CMD ["java", "-jar", "/opt/librespot/app.jar", "--conf-file=/opt/librespot/config/config.toml"]
+
+#CMD ["java", "-jar", "/opt/librespot/app.jar", "--conf-file=/opt/librespot/config/config.toml"]
