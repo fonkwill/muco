@@ -1,4 +1,4 @@
-FROM balenalib/raspberry-pi-debian
+FROM arm32v7/rust:slim-buster
 ENV DEBIAN_FRONTEND=noninteractive
 
 ARG  snapcast_version=0.26.0
