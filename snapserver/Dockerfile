@@ -20,18 +20,21 @@ RUN apt-get update \
 #RUN cargo install librespot --locked
 
 RUN  wget https://github.com/badaix/snapcast/releases/download/v${snapcast_version}/snapserver_${snapcast_version}-1_armhf.deb
+RUN  dpkg -i snapserver_${snapcast_version}-1_armhf.deb \
+  ;  apt-get update \
+  && apt-get -f install -y \
+  && rm -rf /var/lib/apt/lists/*
 
 
 
-
-ENV JAVA_HOME=/opt/java/openjdk
-COPY --from=eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
-ENV PATH="${JAVA_HOME}/bin:${PATH}"
+#ENV JAVA_HOME=/opt/java/openjdk
+#COPY --from=eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
+#ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 
 #RUN /usr/bin/snapserver -v
 
-
+EXPOSE 1704 1705 1780
 #restart snapservice
 
 RUN mkdir -p /opt/librespot/config
@@ -43,11 +46,5 @@ ADD https://github.com/librespot-org/librespot-java/releases/download/v1.6.2/lib
 VOLUME /opt/librespot/config
 ADD ./config.toml /opt/librespot/config/config.toml
 
-EXPOSE 1704 1705 1780
-
-RUN  dpkg -i snapserver_${snapcast_version}-1_armhf.deb \
-  ;  apt-get update \
-  && apt-get -f install -y \
-  && rm -rf /var/lib/apt/lists/*
 
 #CMD ["/usr/bin/snapserver", "-c", "--config=/etc/snapserver.conf"]
