@@ -49,4 +49,4 @@ VOLUME /opt/snapserver/config
 ADD ./config.toml /opt/librespot/config/config.toml
 
 
-CMD ["snapserver", "-v", "--config=/opt/snapserver/config/snapserver.conf"]
+CMD ["snapserver", "--config=/opt/snapserver/config/snapserver.conf"]
