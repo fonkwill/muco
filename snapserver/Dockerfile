@@ -48,5 +48,6 @@ VOLUME /opt/librespot/config
 VOLUME /opt/snapserver/config
 ADD ./config.toml /opt/librespot/config/config.toml
 
+RUN chmod +x /opt/librespot/librespot-api.sh
 
 CMD ["snapserver", "--config=/opt/snapserver/config/snapserver.conf"]
