@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-debian-openjdk:latest
+FROM balenalib/raspberrypi4-64-debian-openjdk:latest
 
 
 RUN mkdir -p /opt/librespot/config
@@ -20,8 +20,9 @@ RUN install_packages pkg-config
 RUN wget https://github.com/badaix/snapcast/releases/download/v0.26.0/snapserver_0.26.0-1_armhf.deb
 
 #RUN install_packages ./snapserver_0.26.0-1_armhf.deb
+RUN dpkg --add-architecture armhf
 
-RUN  dpkg -i snapserver_0.26.0-1_armhf.deb \
+RUN  dpkg -i snapserver_0.26.0-1_armhf.deb:armhf \
   ;  apt-get update \
   && apt-get -f install -y \
   && rm -rf /var/lib/apt/lists/*
