@@ -47,6 +47,5 @@ services:
       - '9993:9993'
       - '24879:24879'
     volumes:
-      - './muco-data/config:/etc/snapserver'
-      - './muco-data/transfer:/tmp'
-      - './muco-data/config:/opt/librespot/config'
+      - './muco-data/snapserver/config:/opt/snapserver/config'
+      - './muco-data/librespot/config:/opt/librespot/config'
