@@ -15,10 +15,15 @@ RUN chmod +x /opt/librespot/librespot-api.sh
 
 #RUN install_packages snapserver
 RUN install_packages wget
+RUN install_packages pkg-config
 RUN wget https://github.com/badaix/snapcast/releases/download/v0.26.0/snapserver_0.26.0-1_armhf.deb
 
-RUN install_packages ./snapserver_0.26.0-1_armhf.deb
+#RUN install_packages ./snapserver_0.26.0-1_armhf.deb
 
+RUN  dpkg -i snapserver_0.26.0-1_armhf.deb \
+  ;  apt update \
+  && apt -f install -y \
+  && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME=/opt/java/openjdk
 COPY --from=eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
