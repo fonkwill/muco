@@ -28,9 +28,9 @@ RUN  dpkg -i snapserver_0.26.0-1_armhf.deb \
 
 ADD https://github.com/librespot-org/librespot-java/releases/download/v1.6.2/librespot-api-1.6.2.jar /opt/librespot/app.jar
 
-ENV JAVA_HOME=/opt/java/openjdk
-COPY --from=arm32v7/eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
-ENV PATH="${JAVA_HOME}/bin:${PATH}"
+#ENV JAVA_HOME=/opt/java/openjdk
+#COPY --from=arm32v7/eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
+#ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 
 
