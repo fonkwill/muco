@@ -1,5 +1,6 @@
 FROM balenalib/raspberrypi4-64-debian:latest
 
+
 RUN mkdir -p /opt/librespot/config
 RUN mkdir -p /opt/snapserver/config
 
@@ -12,7 +13,12 @@ COPY config.toml /opt/librespot/config/config.toml
 
 RUN chmod +x /opt/librespot/librespot-api.sh
 
-RUN install_packages snapserver
+#RUN install_packages snapserver
+RUN install_packages wget
+RUN wget https://github.com/badaix/snapcast/releases/download/v0.26.0/snapserver_0.26.0-1_armhf.deb
+
+RUN install_packages ./snapserver_0.26.0-1_armhf.deb
+
 
 ENV JAVA_HOME=/opt/java/openjdk
 COPY --from=eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
