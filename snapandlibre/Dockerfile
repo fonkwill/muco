@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-debian:latest
+FROM balenalib/raspberrypi3-debian-openjdk:latest
 
 
 RUN mkdir -p /opt/librespot/config
