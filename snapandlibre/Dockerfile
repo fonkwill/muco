@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi4-64-debian:latest
+FROM balenalib/raspberrypi3-debian:latest
 
 RUN mkdir -p /opt/librespot/config
 RUN mkdir -p /opt/snapserver/config
