@@ -35,7 +35,7 @@ services:
       - SNAPSERVER_PORT=6634
   snapserver:
     build:
-      context: ./snapserver
+      context: ./snapandlibre
     privileged: true
     tty: true
     restart: always
