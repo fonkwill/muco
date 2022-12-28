@@ -9,10 +9,10 @@ VOLUME /opt/librespot/config
 VOLUME /opt/snapserver/config
 
 COPY snapserver.conf /opt/snapserver/config/snapserver.conf
-COPY librespot-api.sh /opt/librespot/config/librespot-api.sh
+COPY librespot-api.sh /opt/librespot/librespot-api.sh
 COPY config.toml /opt/librespot/config/config.toml
 
-RUN chmod +x /opt/librespot/config/librespot-api.sh
+RUN chmod +x /opt/librespot/librespot-api.sh
 
 #RUN install_packages snapserver
 RUN install_packages wget
