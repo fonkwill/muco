@@ -10,6 +10,6 @@ services:
     environment:
       - HOST=192.168.0.97
       - PORT=1714
-      - HOST_ID = snapclient_kitchen
-      - LATENCY = 0
-      - SOUNDCARD = default
+      - HOST_ID=snapclient_kitchen
+      - LATENCY=0
+      - SOUNDCARD=default
