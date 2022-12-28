@@ -9,7 +9,7 @@ VOLUME /opt/librespot/config
 VOLUME /opt/snapserver/config
 
 COPY snapserver.conf /opt/snapserver/config/snapserver.conf
-COPY librespot-api.sh /opt/librespot/librespot-api.sh
+COPY librespot-api.sh /opt/librespot/config/librespot-api.sh
 COPY config.toml /opt/librespot/config/config.toml
 
 RUN chmod +x /opt/librespot/librespot-api.sh
@@ -33,7 +33,5 @@ ADD https://github.com/librespot-org/librespot-java/releases/download/v1.6.2/lib
 #ENV JAVA_HOME=/opt/java/openjdk
 #COPY --from=arm32v7/eclipse-temurin:11 $JAVA_HOME $JAVA_HOME
 #ENV PATH="${JAVA_HOME}/bin:${PATH}"
-
-
 
 CMD ["snapserver", "--config=/opt/snapserver/config/snapserver.conf"]
