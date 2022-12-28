@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -jar /opt/librespot/app.jar --conf-file=/opt/librespot/config/config.toml
+java -jar /opt/librespot/app.jar --conf-file=/opt/librespot/config/$1
