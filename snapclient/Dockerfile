@@ -1,7 +1,7 @@
 FROM balenalib/raspberrypi4-64-debian:latest
 ENV HOST 127.0.0.1
 ENV PORT 1704
-ENV HOST_ID snapclient
+ENV HOSTID snapclient
 ENV LATENCY 0
 ENV SOUNDCARD default
 
@@ -21,4 +21,4 @@ RUN  dpkg -i snapclient_0.26.0-1_armhf.deb \
   && rm -rf /var/lib/apt/lists/*
 
 
-CMD snapclient -h ${HOST} -p ${PORT} -s ${SOUNDCARD} --hostID ${HOST_ID} --latency ${LATENCY} 
+CMD snapclient -h ${HOST} -p ${PORT} -s ${SOUNDCARD} --hostID ${HOSTID} --latency ${LATENCY} 
