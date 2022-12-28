@@ -49,3 +49,27 @@ services:
     volumes:
       - './muco-data/snapserver/config:/opt/snapserver/config'
       - './muco-data/librespot/config:/opt/librespot/config'
+  kitchen_client:
+    build:
+      context: ./snapclient
+    privileged: true
+    tty: true
+    restart: always
+    environment:
+      - HOST=192.168.0.97
+      - PORT=1714
+      - HOST_ID=snapclient_kitchen
+      - LATENCY=0
+      - SOUNDCARD=default
+  terrace_client:
+    build:
+      context: ./snapclient
+    privileged: true
+    tty: true
+    restart: always
+    environment:
+      - HOST=192.168.0.97
+      - PORT=1714
+      - HOST_ID=snapclient_terrace
+      - LATENCY=0
+      - SOUNDCARD=18
