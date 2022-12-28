@@ -1,0 +1,15 @@
+version: '2.1'
+networks: {}
+services:
+  kitchen_client:
+    build:
+      context: ./
+    privileged: true
+    tty: true
+    restart: always
+    environment:
+      - HOST=192.168.0.97
+      - PORT=1714
+      - HOST_ID = snapclient_kitchen
+      - LATENCY = 0
+      - SOUNDCARD = default
