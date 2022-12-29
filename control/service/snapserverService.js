@@ -1,9 +1,14 @@
 const WebSocket = require('websocket').w3cwebsocket;
 const conf = require("../config/server")
+import { EventEmitter } from 'node:events';
 
 class SnapserverService{
     constructor(){
-        this.snapControl = new SnapControl(conf.snapcast_url)
+        const myEmitter = new EventEmitter();
+
+        if (!this.snapControl) {
+            this.snapControl = new SnapControl(conf.snapcast_url)
+        }
     }
 
     getAllGroups(){
@@ -226,7 +231,7 @@ class SnapControl {
             case 'Client.OnVolumeChanged':
                 let client = this.getClient(notification.params.id);
                 client.config.volume = notification.params.volume;
-                updateGroupVolume(this.getGroupFromClient(client.id));
+                //updateGroupVolume(this.getGroupFromClient(client.id));
                 return true;
             case 'Client.OnLatencyChanged':
                 this.getClient(notification.params.id).config.latency = notification.params.latency;
@@ -377,6 +382,7 @@ class SnapControl {
         if (is_response) {
             if (json_msg.id == this.status_req_id) {
                 this.server = new Server(json_msg.result.server);
+                this.state = "loaded"
             }
         }
         else {

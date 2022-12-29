@@ -6,8 +6,6 @@ services:
   radio_house:
     build:
       context: ./mopidy
-    privileged: true
-    tty: true
     restart: always
     ports:
       - '6691:6680'
@@ -21,8 +19,6 @@ services:
   radio_garden:
     build:
       context: ./mopidy
-    privileged: true
-    tty: true
     restart: always
     ports:
       - '6692:6680'
@@ -36,8 +32,6 @@ services:
   snapserver:
     build:
       context: ./snapandlibre
-    privileged: true
-    tty: true
     restart: always
     ports:
       - '1714:1704'
@@ -53,7 +47,6 @@ services:
     build:
       context: ./snapclient
     privileged: true
-    tty: true
     restart: always
     environment:
       - HOST=192.168.0.97
@@ -65,7 +58,6 @@ services:
     build:
       context: ./snapclient
     privileged: true
-    tty: true
     restart: always
     environment:
       - HOST=192.168.0.97

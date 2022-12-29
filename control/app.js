@@ -18,7 +18,7 @@ var mucoApi = require('./routes/mucoApi.js');
 
 var snapRouter = require('./routes/snap');
 
-
+var snapserverService = require('./service/snapserverService')
 
 var app = express();
 
