@@ -1,0 +1,18 @@
+version: '2.1'
+networks: {}
+name: muco_clients_gardenhouse
+volumes:
+  muco-data: {}
+services:
+  kitchen_client:
+    build:
+      context: ../src/snapclient
+    privileged: true
+    restart: always
+    environment:
+      - HOST=192.168.0.97
+      - PORT=1714
+      - HOST_ID=snapclient_indoor
+      - LATENCY=0
+      - SOUNDCARD=default
+  

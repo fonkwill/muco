@@ -1,10 +1,9 @@
 const WebSocket = require('websocket').w3cwebsocket;
 const conf = require("../config/server")
-import { EventEmitter } from 'node:events';
+
 
 class SnapserverService{
     constructor(){
-        const myEmitter = new EventEmitter();
 
         if (!this.snapControl) {
             this.snapControl = new SnapControl(conf.snapcast_url)
