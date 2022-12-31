@@ -1,0 +1,39 @@
+version: '2.1'
+networks: {}
+name: muco_clients_house
+volumes:
+  muco-data: {}
+services:
+  kitchen_client:
+    build:
+      context: ../src/snapclient
+    privileged: true
+    restart: always
+    environment:
+      - HOST=192.168.0.97
+      - PORT=1714
+      - HOST_ID=snapclient_kitchen
+      - LATENCY=0
+      - SOUNDCARD=default
+  terrace_client:
+    build:
+      context: ../src/snapclient
+    privileged: true
+    restart: always
+    environment:
+      - HOST=192.168.0.97
+      - PORT=1714
+      - HOST_ID=snapclient_terrace
+      - LATENCY=0
+      - SOUNDCARD=8
+  upstairs_client:
+    build:
+      context: ../src/snapclient
+    privileged: true
+    restart: always
+    environment:
+      - HOST=192.168.0.97
+      - PORT=1714
+      - HOST_ID=snapclient_upstairs
+      - LATENCY=0
+      - SOUNDCARD=33
