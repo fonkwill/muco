@@ -263,4 +263,4 @@ dist
 .pnp.*
 
 #configs
-muco-data*
+/server/muco-data*
