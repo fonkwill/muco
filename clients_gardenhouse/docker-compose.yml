@@ -3,7 +3,7 @@ networks: {}
 volumes:
   muco-data: {}
 services:
-  kitchen_client:
+  indoor_client:
     build:
       context: ../src/snapclient
     privileged: true
@@ -14,4 +14,15 @@ services:
       - HOST_ID=snapclient_indoor
       - LATENCY=0
       - SOUNDCARD=default
+  outdoor_client:
+    build:
+      context: ../src/snapclient
+    privileged: true
+    restart: always
+    environment:
+      - HOST=192.168.0.97
+      - PORT=1714
+      - HOST_ID=snapclient_outdoor
+      - LATENCY=0
+      - SOUNDCARD=default:CARD=Device
   

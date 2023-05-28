@@ -24,8 +24,8 @@ services:
       - PORT=1714
       - HOST_ID=snapclient_terrace
       - LATENCY=0
-      - SOUNDCARD=8
-  upstairs_client:
+      - SOUNDCARD=default:CARD=Device
+  upstairs__client:
     build:
       context: ../src/snapclient
     privileged: true
@@ -33,6 +33,6 @@ services:
     environment:
       - HOST=192.168.0.97
       - PORT=1714
-      - HOST_ID=snapclient_upstairs
+      - HOST_ID=client_upstairs
       - LATENCY=0
-      - SOUNDCARD=33
+      - SOUNDCARD=default:CARD=Device_1

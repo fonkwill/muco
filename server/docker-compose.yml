@@ -16,6 +16,10 @@ services:
       - 'snapserver'
     environment:
       - SNAPSERVER_PORT=6633
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
   radio_garden:
     build:
       context: ../src/mopidy
@@ -29,10 +33,15 @@ services:
       - 'snapserver'
     environment:
       - SNAPSERVER_PORT=6634
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
   snapserver:
     build:
       context: ../src/snapandlibre
     restart: always
+    privileged: true
     ports:
       - '1714:1704'
       - '1715:1705'
@@ -40,6 +49,10 @@ services:
       - '1790:1780'
       - '9993:9993'
       - '24879:24879'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"   
     volumes:
       - './muco-data/snapserver/config:/opt/snapserver/config'
       - './muco-data/librespot/config:/opt/librespot/config'
